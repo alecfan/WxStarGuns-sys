@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>contacts管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Contacts.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="ContactsTableToolbar" role="group">
+                            @if(shiro.hasPermission("/contacts/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="Contacts.openAddContacts()"/>
+                            @}
+                            @if(shiro.hasPermission("/contacts/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="Contacts.openContactsDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/contacts/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="Contacts.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="ContactsTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/contacts/contacts/contacts.js"></script>
+@}

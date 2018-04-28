@@ -158,6 +158,8 @@ public class ShiroConfig {
          *
          */
         Map<String, String> hashMap = new LinkedHashMap<>();
+        //API接口不验证
+        hashMap.put("/api/**", "anon");
         hashMap.put("/static/**", "anon");
         hashMap.put("/login", "anon");
         hashMap.put("/global/sessionError", "anon");
